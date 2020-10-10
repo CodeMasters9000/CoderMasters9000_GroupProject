@@ -1,9 +1,11 @@
-DROP DATABASE IF EXISTS RestaurantApp_90;
-IF NOT EXISTS(SELECT name FROM master.dbo.sysdatabases WHERE name = 'RestaurantApp_90')
-BEGIN
+USE master;
+GO
+IF DB_ID (N'RestaurantApp_90') IS NOT NULL
+DROP DATABASE RestaurantApp_90;
+GO
 CREATE DATABASE RestaurantApp_90;
+GO
 USE RestaurantApp_90;
-END
 
 CREATE TABLE restaurant
 (restaurantID VARCHAR(3) NOT NULL,
@@ -99,24 +101,24 @@ VALUES('009', NULL, NULL, NULL, '3', NULL, NULL, 1);
 
 
 INSERT INTO menuItems
-VALUES('000', 'Chicken WcWuffin', '2.99');
+VALUES('00', 'Chicken WcWuffin', '2.99');
 INSERT INTO menuItems
-VALUES('001', 'WcCoffee', '5.99');
+VALUES('01', 'WcCoffee', '5.99');
 INSERT INTO menuItems
-VALUES('002', 'Turkey WcWrap', '4.99');
+VALUES('02', 'Turkey WcWrap', '4.99');
 INSERT INTO menuItems
-VALUES('003', 'Grand Wac', '9.99');
+VALUES('03', 'Grand Wac', '9.99');
 INSERT INTO menuItems
-VALUES('004', 'Grand Wac Bacon', '10.99');
+VALUES('04', 'Grand Wac Bacon', '10.99');
 INSERT INTO menuItems
-VALUES('005', 'Double Grand Wac', '11.99');
+VALUES('05', 'Double Grand Wac', '11.99');
 INSERT INTO menuItems
-VALUES('006', 'Fries M', '3.99');
+VALUES('06', 'Fries M', '3.99');
 INSERT INTO menuItems
-VALUES('007', 'Fries S', '2.99');
+VALUES('07', 'Fries S', '2.99');
 INSERT INTO menuItems
-VALUES('008', 'Fries L', '4.99');
+VALUES('08', 'Fries L', '4.99');
 INSERT INTO menuItems
-VALUES('009', 'WcFlurry', '2.99');
+VALUES('09', 'WcFlurry', '2.99');
 INSERT INTO menuItems
-VALUES('010', 'WcBLT', '10.99');
+VALUES('10', 'WcBLT', '10.99');
