@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.csis3275") //This must match your packages
+@ComponentScan(basePackages = "controller_CodeMasters_9000") //This must match your packages
 public class SpringMVCConfig_CodeMasters_9000 implements WebMvcConfigurer {
 
 	 //View, this class resolves the view name to the .jsp file.
