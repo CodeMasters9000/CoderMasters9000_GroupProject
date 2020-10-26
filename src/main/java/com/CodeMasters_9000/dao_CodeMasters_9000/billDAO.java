@@ -12,7 +12,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.CodeMasters_9000.model_CodeMasters_9000.BillMapper;
+import com.CodeMasters_9000.model_CodeMasters_9000.Reservation;
+import com.CodeMasters_9000.model_CodeMasters_9000.ReservationMapper;
 import com.CodeMasters_9000.model_CodeMasters_9000.Server;
+import com.CodeMasters_9000.model_CodeMasters_9000.ServerMapper;
 import com.CodeMasters_9000.model_CodeMasters_9000.Bill;
 
 @Component
@@ -22,6 +25,7 @@ public class billDAO {
 	private final String SQL_GET_ALL = "SELECT * FROM bill";
 	private final String SQL_CREATE_BILL = "INSERT INTO bill (billID, reservationID, serverID,itemsOrdered,itemsComped,subtotal, tip, isPaid, seatTime, leaveTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
 	private final String SQL_GET_SERVERS = "SELECT * FROM SERVER";
+	private final String SQL_GET_RES = "SELECT * FROM RESERVATION";
 	@Autowired
 	public billDAO(DataSource dataSource)	{
 		jdbcTemplate = new JdbcTemplate(dataSource);
@@ -33,6 +37,10 @@ public class billDAO {
 	}
 	public List<Server> getAllServers()	{
 		return jdbcTemplate.query(SQL_GET_SERVERS, new ServerMapper());
+		
+	}
+	public List<Reservation> getAllReservations()	{
+		return jdbcTemplate.query(SQL_GET_RES, new ReservationMapper());
 		
 	}
 	public boolean createBill(Bill newBill) {

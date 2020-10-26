@@ -27,8 +27,11 @@ public class ControllerClass{
 	@GetMapping("/bills")
 	public String bills(HttpSession session, Model model) {
 		List<Bill> bills = bDAO.getAllBills();
+		List<Server> servers = bDAO.getAllServers();
+		List<Reservation> reservations = bDAO.getAllReservations();
+		model.addAttribute("serverList", servers);
+		model.addAttribute("resList", reservations);
 		model.addAttribute("billList", bills);
-		System.out.println(bills.get(0).getLeaveTime());
 		return ("bills");
 	}
 	
@@ -39,6 +42,10 @@ public class ControllerClass{
 		 bDAO.createBill(createBill);
 
 	 List<Bill> bills = bDAO.getAllBills();
+	List<Server> servers = bDAO.getAllServers();
+	List<Reservation> reservations = bDAO.getAllReservations();
+	model.addAttribute("serverList", servers);
+	model.addAttribute("resList", reservations);
 	 model.addAttribute("billList", bills);
 
 	 return "bills";
