@@ -67,7 +67,7 @@
 			<div class="form-group">
 				<label for="reservationID" class="col-md-3 controllabel">Reservation ID</label>
 				<div class="col-md-9">
-										<form:select path="reservationID" cssClass="form-control">
+					<form:select path="reservationID" cssClass="form-control">
 					<c:forEach var="res" items="${resList}">
 					<option value="${res.reservationID}">${res.name}</option>
 					</c:forEach>
