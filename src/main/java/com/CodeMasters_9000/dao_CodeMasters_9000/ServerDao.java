@@ -55,9 +55,15 @@ public class ServerDao {
 	
 	
 	public boolean setPass(String Id,String oldPass , String newPass, String confirmPass) {
+		boolean flag = false;
+		List<Server> serverList = getAllServers();
 		
-		
-		if (newPass.equals(confirmPass)) {
+		for(Server server : serverList) {
+			if(server.getPassword().equals(oldPass)) {
+				flag = true;
+			}
+		}
+		if (newPass.equals(confirmPass) && flag) {
 			
 			return jdbcTemplate.update(SQL_SETPASSWORD, newPass, Id) > 0;
 		}else 
