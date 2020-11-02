@@ -49,7 +49,7 @@
 					<td>${bill.seatTime}</td>
 					<td>
 					<c:choose>
-						<c:when test="${bill.leaveTime == '1970-01-01 01:00:00.0'}">
+						<c:when test="${bill.leaveTime.before(bill.seatTime)}">
 						Seated
 						</c:when>
 						<c:otherwise>
@@ -74,7 +74,7 @@
 					</form:select>
 				</div>
 
-			</div>
+			</div>gi
 			<div class="form-group">
 				<label for="serverID" class="col-md-3 controllabel">Server</label>
 				
