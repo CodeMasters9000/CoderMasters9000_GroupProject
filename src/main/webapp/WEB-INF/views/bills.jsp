@@ -20,12 +20,13 @@
 		<c:if test="${ message !=null }">
 			<div class="alert alert-success" role="alert">${message}</div>
 		</c:if>
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped table-bordered" >
 
 			<tr>
 				<td>Bill ID</td>
 				<td>Reservation ID</td>
 				<td>Server ID</td>
+				<td>Server Name</td>
 				<td>Items Ordered</td>
 				<td>itemsComped</td>
 				<td>subTotal</td>
@@ -34,12 +35,20 @@
 				<td>Is Paid</td>
 				<td>Seating Time</td>
 				<td>Leave Time</td>
+				<td>Edit Bill</td>
 			</tr>
 			<c:forEach var="bill" items="${billList}">
 				<tr>
 					<td>${bill.billID}</td>
 					<td>${bill.reservationID}</td>
 					<td>${bill.serverID}</td>
+					<c:forEach var="server" items="${serverList}">
+					<c:choose>
+					<c:when test="${bill.serverID == server.serverID}">
+					<td>${server.serverName}</td>
+					</c:when>
+					</c:choose>
+					</c:forEach>
 					<td>${bill.itemsOrdered}</td>
 					<td>${bill.itemsComped}</td>
 					<td>${bill.subtotal}</td>
@@ -57,6 +66,21 @@
 						</c:otherwise>
 					</c:choose>
 						</td>
+					<td><a href="${pageContext.request.contextPath}/editBill?bill=${bill.billID}">View and Edit</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+				Server Directory
+				<table class="table table-striped table-bordered">
+			<tr>
+				<td>Server ID</td>
+				<td>Server Name</td>
+			</tr>
+			<c:forEach var="s" items="${serverList}">
+				<tr>
+					<td>${s.serverID}</td>
+					<td>${s.serverName}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -74,7 +98,7 @@
 					</form:select>
 				</div>
 
-			</div>gi
+			</div>
 			<div class="form-group">
 				<label for="serverID" class="col-md-3 controllabel">Server</label>
 				
