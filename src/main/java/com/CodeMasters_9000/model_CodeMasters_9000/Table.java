@@ -17,8 +17,8 @@ public class Table{
 	private boolean isAvailable;
 
 
-	public void setTableID(int id) {
-		this.tableID = id;
+	public void setTableID(int i) {
+		this.tableID = i;
 	}
 	public int getTableID() {
 		return tableID;

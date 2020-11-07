@@ -1,5 +1,7 @@
 package com.CodeMasters_9000.controller_CodeMasters_9000;
 import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.CodeMasters_9000.dao_CodeMasters_9000.ServerDao;
+import com.CodeMasters_9000.dao_CodeMasters_9000.TableDAO;
 import com.CodeMasters_9000.dao_CodeMasters_9000.billDAO;
 import com.CodeMasters_9000.model_CodeMasters_9000.*;
 @Controller
@@ -24,6 +27,8 @@ public class ControllerClass{
 	billDAO bDAO;
 	@Autowired
 	ServerDao sDao;
+	@Autowired
+	TableDAO tDAO;
 	
 	
 	@ModelAttribute("newBill")
@@ -111,6 +116,27 @@ public class ControllerClass{
 		}
 	}
 	
+	
+	@GetMapping("/tables")
+	public String tablesMap(@ModelAttribute("table") Table table, Model model, HttpSession session) {
+		
+		
+		List<Table> Tables = tDAO.getAllTables();
+		List<Table> availableTables = new ArrayList<Table>();
+		List<Table> unavailableTables = new ArrayList<Table>();
+		
+		for(Table t : Tables) {
+			if(t.getIsAvailable()) {
+				availableTables.add(t);
+			}else {
+				unavailableTables.add(t);
+			}
+		}
+		model.addAttribute("availableTables", availableTables);
+		model.addAttribute("unavailableTables", unavailableTables);
+		model.addAttribute("tableModel", table);
+		return "tables";
+	}
 	
 	
 	
