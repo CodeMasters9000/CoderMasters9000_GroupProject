@@ -138,6 +138,18 @@ public class ControllerClass{
 		return "tables";
 	}
 	
+	@GetMapping("/editTable")
+	public String editTable(@ModelAttribute("table") Table table, Model model, HttpSession session, @RequestParam(required = true) int id) {
+		
+		model.addAttribute("id", id);
+		table = tDAO.getOneTable(id);
+		model.addAttribute("table", table);
+		List<Server> servers = sDao.getAllServers();
+		model.addAttribute("serverList", servers);
+		
+		return "editTable";
+	}
+	
 	
 	
  

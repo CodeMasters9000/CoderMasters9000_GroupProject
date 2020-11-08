@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-
+import com.CodeMasters_9000.model_CodeMasters_9000.Server;
 import com.CodeMasters_9000.model_CodeMasters_9000.Table;
 import com.CodeMasters_9000.model_CodeMasters_9000.TableMapper;
 
@@ -31,6 +31,17 @@ public class TableDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	
+	public Table getOneTable(int id) {
+		List<Table> list = getAllTables();
+		Table t = new Table();
+		for(Table table : list) {
+			if((table.getTableID()) == id) {
+				t = table;
+			}
+		}
+		return t;
+	}
 	public List<Table> getAllTables(){
 		return jdbcTemplate.query(SQL_GET_ALL, new TableMapper());
 	}
