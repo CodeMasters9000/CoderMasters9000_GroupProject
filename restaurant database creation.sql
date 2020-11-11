@@ -52,18 +52,18 @@ FOREIGN KEY(reservationID) REFERENCES reservation(reservationID),
 FOREIGN KEY(serverID) REFERENCES server(serverID));
 
 CREATE TABLE tables
-( tableID VARCHAR(3) NOT NULL,
+( tableID DECIMAL NOT NULL,
    reservationID VARCHAR(3),
    serverID VARCHAR(3),
    billID VARCHAR(6),
    seats VARCHAR(2), 
-   reservationTime DATETIME,
-   availableTime DATETIME, /*Time when table will be open, tables reserved for 90 minutes initially, increased by 10 mins as needed*/
+   reservationTime VARCHAR(20),
+   availableTime VARCHAR(20), /*Time when table will be open, tables reserved for 90 minutes initially, increased by 10 mins as needed*/
    isAvailable BIT,
  PRIMARY KEY (tableID),
- FOREIGN KEY(reservationID) REFERENCES reservation(reservationID),
- FOREIGN KEY(serverID) REFERENCES server(serverID),
- FOREIGN KEY(billID) REFERENCES bill(billID));
+ FOREIGN KEY(reservationID) REFERENCES reservation(reservationID) ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY(serverID) REFERENCES server(serverID) ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY(billID) REFERENCES bill(billID) ON UPDATE CASCADE ON DELETE CASCADE);
 
 INSERT INTO restaurant
 VALUES('000', 'WcWonalds', '10');
@@ -79,25 +79,25 @@ VALUES('003', 'HOST', NULL, '1234567890', 1, 'HOST');
 
 
 INSERT INTO tables
-VALUES('000', NULL, NULL, NULL, '5', NULL, NULL, 1);
+VALUES(0, NULL, NULL, NULL, '5', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('001', NULL, NULL, NULL, '1', NULL, NULL, 1);
+VALUES(1, NULL, NULL, NULL, '1', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('002', NULL, NULL, NULL, '2', NULL, NULL, 1);
+VALUES(2, NULL, NULL, NULL, '2', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('003', NULL, NULL, NULL, '5', NULL, NULL, 1);
+VALUES(3, NULL, NULL, NULL, '5', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('004', NULL, NULL, NULL, '8', NULL, NULL, 1);
+VALUES(4, NULL, NULL, NULL, '8', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('005', NULL, NULL, NULL, '2', NULL, NULL, 1);
+VALUES(5, NULL, NULL, NULL, '2', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('006', NULL, NULL, NULL, '4', NULL, NULL, 1);
+VALUES(6, NULL, NULL, NULL, '4', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('007', NULL, NULL, NULL, '10', NULL, NULL, 1);
+VALUES(7, NULL, NULL, NULL, '10', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('008', NULL, NULL, NULL, '3', NULL, NULL, 1);
+VALUES(8, NULL, NULL, NULL, '3', NULL, NULL, 1);
 INSERT INTO tables
-VALUES('009', NULL, NULL, NULL, '3', NULL, NULL, 1);
+VALUES(9, NULL, NULL, NULL, '3', NULL, NULL, 1);
 
 
 INSERT INTO menuItems
@@ -125,7 +125,7 @@ VALUES('10', 'WcBLT', '10.99');
 
 
 INSERT INTO bill
-VALUES('000000', '000', '000', '00,01,02,03', '', 23.96, 10.00, NULL, 0, '2020-09-19 10:58:00', '2020-09-20 23:59:59' );
+VALUES(0, '000', '000', '00,01,02,03', '', 23.96, 10.00, NULL, 0, '2020-09-19 10:58:00', '2020-09-20 23:59:59' );
 
 INSERT INTO reservation
 VALUES('000', '060','asdf@asdf.com', 'Ignatius Percel');

@@ -1,6 +1,6 @@
 package com.CodeMasters_9000.model_CodeMasters_9000;
 
-import java.util.Date;
+
 
 
 public class Table{
@@ -8,12 +8,12 @@ public class Table{
 	*
 	*/
 	private int tableID;
-	private int reservationID;
-	private int serverID;
-	private int billID;
-	private int seats;
-	private Date reservationTime;
-	private Date availableTime;
+	private String reservationID;
+	private String serverID;
+	private String billID;
+	private String seats;
+	private String reservationTime;
+	private String availableTime;
 	private boolean isAvailable;
 
 
@@ -23,40 +23,40 @@ public class Table{
 	public int getTableID() {
 		return tableID;
 	}
-	public void setReservationID(int id) {
-		this.reservationID = id;
+	public void setReservationID(String reservationID) {
+		this.reservationID = reservationID;
 	}
-	public int getReservationID() {
+	public String getReservationID() {
 		return reservationID;
 	}
-	public void setServerID(int id) {
-		this.serverID = id;
+	public void setServerID(String serverID) {
+		this.serverID = serverID;
 	}
-	public int getServerID() {
+	public String getServerID() {
 		return serverID;
 	}
-	public void setBillID(int id) {
-		this.billID = id;
+	public void setBillID(String billID) {
+		this.billID = billID;
 	}
-	public int getBillID() {
+	public String getBillID() {
 		return billID;
 	}
-	public void setSeats(int seat) {
-		this.seats = seat;
+	public void setSeats(String seats) {
+		this.seats = seats;
 	}
-	public int getSeats() {
+	public String getSeats() {
 		return seats;
 	}
-	public void setReservationTime(Date reservation) {
-		this.reservationTime = reservation;
+	public void setReservationTime(String dateTime) {
+		this.reservationTime = dateTime;
 	}
-	public Date getReservationTime() {
+	public String getReservationTime() {
 		return reservationTime;
 	}
-	public void setAvailableTime(Date available) {
-		this.availableTime = available;
+	public void setAvailableTime(String availableTime) {
+		this.availableTime = availableTime;
 	}
-	public Date getAvailableTime() {
+	public String getAvailableTime() {
 		return availableTime;
 	}
 	public void setIsAvailable(boolean x) {

@@ -9,12 +9,12 @@ public class TableMapper implements RowMapper<Table>{
 		
 		Table t = new Table();
 		t.setTableID(resultSet.getInt("tableID"));
-		t.setReservationID(resultSet.getInt("reservationID"));
-		t.setServerID(resultSet.getInt("serverID"));
-		t.setBillID(resultSet.getInt("billID"));
-		t.setSeats(resultSet.getInt("seats"));
-		t.setReservationTime(resultSet.getDate("reservationTime"));
-		t.setAvailableTime(resultSet.getDate("availableTime"));
+		t.setReservationID(resultSet.getString("reservationID"));
+		t.setServerID(resultSet.getString("serverID"));
+		t.setBillID(resultSet.getString("billID"));
+		t.setSeats(resultSet.getString("seats"));
+		t.setReservationTime(resultSet.getString("reservationTime"));
+		t.setAvailableTime(resultSet.getString("availableTime"));
 		t.setIsAvailable(resultSet.getBoolean("isAvailable"));
 
 		return t;

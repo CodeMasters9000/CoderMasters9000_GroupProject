@@ -22,7 +22,7 @@ public class TableDAO {
 	private final String SQL_GET_ALL = "SELECT * FROM TABLES";
 	
 	private final String SQL_EDIT_TABLE = "UPDATE TABLES SET RESERVATIONID = ?, SERVERID = ?, BILLID = ?, "
-			+ "AVAILABLETIME = ? WHERE TABLEID = ? ";
+			+ "RESERVATIONTIME = ?, ISAVAILABLE = ? WHERE TABLEID = ? ";
 	
 	
 	
@@ -49,9 +49,9 @@ public class TableDAO {
 
 	
 	
-	public boolean editServer(Table newTable) {
+	public boolean editTable(Table newTable) {
 		return jdbcTemplate.update(SQL_EDIT_TABLE, newTable.getReservationID(), newTable.getServerID(), 
-				newTable.getBillID(), newTable.getIsAvailable(), newTable.getTableID()) > 0;
+				newTable.getBillID(), newTable.getReservationTime(), newTable.getIsAvailable() ,newTable.getTableID()) > 0;
 	}
 	
 	

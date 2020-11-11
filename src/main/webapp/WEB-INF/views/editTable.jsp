@@ -24,31 +24,33 @@
 			<div class="form-group">
 				<label for="ReservationID" class="col-md-3 controllabel">ReservationID : </label>
 				<div>
-					<form:input path="ReservationID" class="form-control" value = "${table.reservationID}"/>
+					<input name="ReservationID" class="form-control" />
 				</div>
 				
 				<div class="col-md-9">
-					<form:select path="serverID" class="form-control" action="${pageContext.request.contextPath}/editProfile/"
-			method="post" modelAttribute="server">
+					<select  name="serverID" class="form-control">
+	
 					<c:forEach var="server" items="${serverList}">
 					<option value="${server.serverID}">${server.serverName}</option>
 					</c:forEach>
-					</form:select>
+					</select>
 				
-				<label for="BillID" class="col-md-3 controllabel">Bill ID : </label>
+				<label for="billID" class="col-md-3 controllabel">Bill ID : </label>
 				<div>
-					<form:input path="BillID" cssClass = "form-control" value = "${table.billID}"/>
+					<input name="billID" Class = "form-control" />
 				</div>
-				<label for="ReservationTime" class="col-md-3 controllabel">Reservation Time : </label>
+				<label for="time" class="col-md-3 controllabel">Reservation Time : </label>
 				
 				<div>
-					<form:input type ="time" path="ReservationTime" cssClass = "form-control" min = "11:00" max = "23:00" value = "${table.reservationID}"/>
+					<input type ="time" name="time" min = "11:00" max = "23:00" />
+					<input type ="date" name="date"/>
+					
 				</div>	
 				</div>
 				<div>
-				<form:button class="btn btn-primary">
+				<button class="btn btn-primary">
 					Submit
-					</form:button>
+					</button>
 				</div>
 		</div>
 		</form:form>		

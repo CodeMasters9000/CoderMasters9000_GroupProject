@@ -1,7 +1,12 @@
 package com.CodeMasters_9000.controller_CodeMasters_9000;
 import javax.servlet.http.HttpSession;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +35,7 @@ public class ControllerClass{
 	@Autowired
 	TableDAO tDAO;
 	
+	private int id;
 	
 	@ModelAttribute("newBill")
 	public Bill setupAddForm()	{
@@ -141,6 +147,7 @@ public class ControllerClass{
 	@GetMapping("/editTable")
 	public String editTable(@ModelAttribute("table") Table table, Model model, HttpSession session, @RequestParam(required = true) int id) {
 		
+		this.id = id;
 		model.addAttribute("id", id);
 		table = tDAO.getOneTable(id);
 		model.addAttribute("table", table);
@@ -148,6 +155,48 @@ public class ControllerClass{
 		model.addAttribute("serverList", servers);
 		
 		return "editTable";
+	}
+	
+	
+	@PostMapping("editTable")
+	public String changeStatus(@ModelAttribute("table") Table table, Model model, @RequestParam("time") String time
+			, @RequestParam("date") String date, @RequestParam("ReservationID") String reservationID, 
+			@RequestParam("serverID") String serverID, @RequestParam("billID") String billID ) {
+		
+		
+		String dateTime = date.concat(" ".concat(time));
+		
+		table = tDAO.getOneTable(this.id);
+		table.setReservationTime(dateTime);
+		table.setReservationID(reservationID);
+		table.setServerID(serverID);
+		table.setBillID(billID);
+		table.setIsAvailable(false);
+		
+		if(tDAO.editTable(table)) {
+			model.addAttribute("message", "A new table is unavailable" );
+			
+		}else {
+			model.addAttribute("dangerMessage", "Failed to add the table" );
+		}
+			
+		
+		List<Table> tables = tDAO.getAllTables();
+		List<Table> availableTables = new ArrayList<Table>();
+		List<Table> unavailableTables = new ArrayList<Table>();
+		
+		for(Table t : tables) {
+			if(t.getIsAvailable()) {
+				availableTables.add(t);
+			}else {
+				unavailableTables.add(t);
+			}
+		}
+		model.addAttribute("availableTables", availableTables);
+		model.addAttribute("unavailableTables", unavailableTables);
+		model.addAttribute("tableModel", table);
+		return "tables";
+		
 	}
 	
 	

@@ -17,9 +17,12 @@
 	
 		<h1>Tables map</h1>
 		
-		<hr><p>To see the schedule of the tables, click on their table ID on the chart</p>><hr>
+		<hr><p>To see the schedule of the tables, click on their table ID on the chart</p><hr>
 			<c:if test="${ message !=null }">
 			<div class="alert alert-success" role="alert">${message}</div>
+		</c:if>
+		<c:if test="${ dangerMessage !=null }">
+			<div class="alert alert-danger" role="alert">${dangerMessage}</div>
 		</c:if>
 		<a href="https://ibb.co/bPVh3vQ"><img src="https://i.ibb.co/47LyfSK/floor.png" alt="floor" border="0"></a>
 		<hr>
