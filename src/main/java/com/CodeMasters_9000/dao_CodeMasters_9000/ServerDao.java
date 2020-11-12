@@ -18,6 +18,7 @@ public class ServerDao {
 	
 	JdbcTemplate jdbcTemplate;
 	
+	private final String SQL_GET_ONE = "SELECT ServerName FROM SERVER WHERE SERVERID = ?";
 	private final String SQL_GET_ALL = "SELECT * FROM SERVER";
 	private final String SQL_CREATE_SERVER = "INSERT INTO SERVER (SERVERID, SERVERNAME, ASSIGNEDTABLES, PHONENUMBER) VALUES (?,?,?,"
 			+ "?)";
@@ -32,6 +33,16 @@ public class ServerDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	public String getOneServer(int id) {
+		List<Server> list = getAllServers();
+		String name = "";
+		for(Server server : list) {
+			if(Integer.parseInt(server.getServerID()) == id) {
+				name = server.getServerName();
+			}
+		}
+		return name;
+	}
 	public List<Server> getAllServers(){
 		return jdbcTemplate.query(SQL_GET_ALL, new ServerMapper());
 	}
