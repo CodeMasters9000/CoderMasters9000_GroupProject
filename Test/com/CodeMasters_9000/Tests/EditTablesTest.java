@@ -1,4 +1,4 @@
-package com.CodeMasters_9000.unitTests;
+package com.CodeMasters_9000.Tests;
 
 import static org.junit.Assert.*;
 
