@@ -62,7 +62,7 @@
 		    <tr>
 		      <th scope="col">TABLE ID </th>
 		      <th scope="col">RESERVATION ID</th>
-		      <th scope="col">SERVER NAME </th>
+		      <th scope="col">SERVER ID </th>
 		      <th scope="col">BILL ID</th>
 		      <th scope="col">SEATS</th>
 		      <th scope="col">RESERVATION TIME</th>
