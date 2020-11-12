@@ -15,6 +15,7 @@ public class Table{
 	private String reservationTime;
 	private String availableTime;
 	private boolean isAvailable;
+	
 
 
 	public void setTableID(int i) {
@@ -64,6 +65,16 @@ public class Table{
 	}
 	public boolean getIsAvailable() {
 		return isAvailable;
+	}
+	
+	
+	public void availableTime() {
+		String reservationTime = getReservationTime();
+		int inHour  = Integer.parseInt(reservationTime.substring(11, 13));
+		String outHour = Integer.toString(inHour + 2);
+		String availableTime = reservationTime.replace(reservationTime.substring(11, 13), outHour);
+		
+		setAvailableTime(availableTime);
 	}
 
 }

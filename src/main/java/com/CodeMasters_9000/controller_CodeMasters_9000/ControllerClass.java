@@ -172,6 +172,7 @@ public class ControllerClass{
 		table.setServerID(serverID);
 		table.setBillID(billID);
 		table.setIsAvailable(false);
+		table.availableTime();
 		
 		if(tDAO.editTable(table)) {
 			model.addAttribute("message", "A new table is unavailable" );
