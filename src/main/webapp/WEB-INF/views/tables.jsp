@@ -17,7 +17,6 @@
 	
 		<h1>Tables map</h1>
 		
-		<hr><p>To see the schedule of the tables, click on their table ID on the chart</p><hr>
 			<c:if test="${ message !=null }">
 			<div class="alert alert-success" role="alert">${message}</div>
 		</c:if>
@@ -35,7 +34,7 @@
 		      <th scope="col">TABLE ID </th>
 		      <th scope="col">SEATS</th>
 		      <th scope="col">CHANGE STATUS</th>
-		      <th scope="col">MAKE RESERVATION</th>
+		    
 		      
 		      
 		    </tr>
@@ -46,7 +45,7 @@
 		      <th scope="row">00${table.tableID}</th>
 		      <td>${table.seats}</td>
 		      <td><a HREF="${pageContext.request.contextPath}/editTable/?id=${table.tableID}">Change Status</a></td>
-		      <td><a HREF="${pageContext.request.contextPath}/makeReservation/">Make a reservation</a></td>
+		     
 		      <form:form method="post" modelAttribute="table">
 		      <form:input name = "tableID" path = "tableID" type="hidden" value = "${table.tableID}"></form:input>
 		      </form:form>
@@ -67,19 +66,23 @@
 		      <th scope="col">SEATS</th>
 		      <th scope="col">RESERVATION TIME</th>
 		      <th scope="col">AVAILABLE TIME</th>
+		      <th scope="col">Change Status </th>
+		      
 		      
 		    </tr>
 		  </thead>
 		  <tbody>
 		    <c:forEach var="table" items="${unavailableTables}">
 		    <tr>
-		      <th scope="row"><a HREF="${pageContext.request.contextPath}/editTable/">00${table.tableID}</a></th>
+		      <th scope="row">${table.tableID}</th>
 		      <td>${table.reservationID}</td>
 		      <td>${table.serverID}</td>
 		      <td>${table.billID}</td>
 		      <td>${table.seats}</td>
 		      <td>${table.reservationTime}</td>
 		      <td>${table.availableTime}</td>
+		      <td><a HREF="${pageContext.request.contextPath}/editUnavailable/?id=${table.tableID}">Change Status</a></td>
+		      
 		      
 		      
 		      
