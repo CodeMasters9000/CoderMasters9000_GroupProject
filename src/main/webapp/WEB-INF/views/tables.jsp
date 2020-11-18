@@ -17,7 +17,6 @@
 	
 		<h1>Tables map</h1>
 		
-		<hr><p>To see the schedule of the tables, click on their table ID on the chart</p><hr>
 			<c:if test="${ message !=null }">
 			<div class="alert alert-success" role="alert">${message}</div>
 		</c:if>

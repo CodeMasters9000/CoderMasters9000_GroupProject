@@ -239,10 +239,10 @@ public class ControllerClass{
 		
 		
 		if(tDAO.editTable(table)) {
-			model.addAttribute("message", "A new table is unavailable" );
+			model.addAttribute("message", "Table is available again" );
 			
 		}else {
-			model.addAttribute("dangerMessage", "Failed to add the table" );
+			model.addAttribute("dangerMessage", "Couldnt make the table available" );
 		}
 			
 		
