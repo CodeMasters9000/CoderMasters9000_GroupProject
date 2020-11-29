@@ -1,5 +1,6 @@
 package com.CodeMasters_9000.controller_CodeMasters_9000;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,11 +23,16 @@ public class EditProfile_Feature_ControllerClass {
 
 	@GetMapping("/editProfilePage")
 	public String editProfilePage(HttpSession session, Model model, @ModelAttribute("server") Server server) {
-		List<Server> servers = sDao.getAllServers();
+		String str = "";
+		if (session.getAttribute("id") != null) {
+			List<Server> servers = sDao.getAllServers();
 
-		model.addAttribute("serverList", servers);
-
-		return "editProfile";
+			model.addAttribute("serverList", servers);
+			str = "editProfile";
+		} else {
+			str = "login";
+		}
+		return str;
 	}
 
 	@PostMapping("/editProfile")
@@ -43,29 +49,40 @@ public class EditProfile_Feature_ControllerClass {
 
 	@GetMapping("/changePass")
 	public String changePassPage(@ModelAttribute("server") Server server, Model model, HttpSession session) {
-		List<Server> servers = sDao.getAllServers();
+		String str = "";
+		if (session.getAttribute("id") != null) {
+			List<Server> servers = sDao.getAllServers();
 
-		model.addAttribute("serverList", servers);
-		model.addAttribute("serverModel", server);
-
-		return "changePass";
+			model.addAttribute("serverList", servers);
+			model.addAttribute("serverModel", server);
+			str = "changePass";
+		} else {
+			str = "login";
+		}
+		return str;
 	}
 
 	@PostMapping("/changePassword")
-	public String changeSubmitted(@ModelAttribute("server") Server server, Model model,
+	public String changeSubmitted(@ModelAttribute("server") Server server, Model model, HttpSession session,
 			@RequestParam(name = "newPass") String newPass, @RequestParam(name = "confirmPass") String confirmPass,
 			@RequestParam(name = "previousPass") String prePass, @RequestParam(name = "ID") String serverId) {
 
-		if (sDao.setPass(serverId, prePass, newPass, confirmPass)) {
+		try {
+			if (sDao.setPass(serverId, prePass, newPass, confirmPass)) {
 
-			model.addAttribute("message", "Password changed!");
-			List<Server> servers = sDao.getAllServers();
-			model.addAttribute("serverList", servers);
-			return "changePass";
+				model.addAttribute("message", "Password changed!");
+				List<Server> servers = sDao.getAllServers();
+				model.addAttribute("serverList", servers);
 
-		} else {
-			model.addAttribute("dangerMessage", "Wrong information entered ");
-			return "changePass";
+			} else {
+				model.addAttribute("dangerMessage", "Wrong information entered ");
+
+			}
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
 		}
+		return "changePass";
 	}
 }

@@ -45,8 +45,13 @@
 					</thead>
 				</table>
 			</div>
+			<div>
+		<a HREF="${pageContext.request.contextPath}/Logout/"
+			class="btn btn-primary">Log out</a>
+	</div>
 		</div>
 	</div>
+	
 
 </body>
 </html>

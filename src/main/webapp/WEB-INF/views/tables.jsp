@@ -16,6 +16,10 @@
 <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
 </head>
 <body>
+	<div>
+		<a HREF="${pageContext.request.contextPath}/homePage/"
+			class="btn btn-primary">Return to Home Page</a>
+	</div>
 	<div class="container">
 
 		<h1>Tables map</h1>
@@ -99,5 +103,6 @@
 			</table>
 		</div>
 	</div>
+
 </body>
 </html>

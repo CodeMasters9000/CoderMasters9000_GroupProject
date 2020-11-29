@@ -28,36 +28,45 @@ public class EditTable_Feature_ControllerClass {
 
 	@GetMapping("/tables")
 	public String tablesMap(@ModelAttribute("table") Table table, Model model, HttpSession session) {
+		String str = "";
+		if (session.getAttribute("id") != null) {
+			List<Table> Tables = tDAO.getAllTables();
+			List<Table> availableTables = new ArrayList<Table>();
+			List<Table> unavailableTables = new ArrayList<Table>();
 
-		List<Table> Tables = tDAO.getAllTables();
-		List<Table> availableTables = new ArrayList<Table>();
-		List<Table> unavailableTables = new ArrayList<Table>();
-
-		for (Table t : Tables) {
-			if (t.getIsAvailable()) {
-				availableTables.add(t);
-			} else {
-				unavailableTables.add(t);
+			for (Table t : Tables) {
+				if (t.getIsAvailable()) {
+					availableTables.add(t);
+				} else {
+					unavailableTables.add(t);
+				}
 			}
+			model.addAttribute("availableTables", availableTables);
+			model.addAttribute("unavailableTables", unavailableTables);
+			model.addAttribute("tableModel", table);
+			str = "tables";
+		} else {
+			str = "login";
 		}
-		model.addAttribute("availableTables", availableTables);
-		model.addAttribute("unavailableTables", unavailableTables);
-		model.addAttribute("tableModel", table);
-		return "tables";
+		return str;
 	}
 
 	@GetMapping("/editTable")
 	public String editTable(@ModelAttribute("table") Table table, Model model, HttpSession session,
 			@RequestParam(required = true) int id) {
-
-		this.id = id;
-		model.addAttribute("id", id);
-		table = tDAO.getOneTable(id);
-		model.addAttribute("table", table);
-		List<Server> servers = sDao.getAllServers();
-		model.addAttribute("serverList", servers);
-
-		return "editTable";
+		String str = "";
+		if (session.getAttribute("id") != null) {
+			this.id = id;
+			model.addAttribute("id", id);
+			table = tDAO.getOneTable(id);
+			model.addAttribute("table", table);
+			List<Server> servers = sDao.getAllServers();
+			model.addAttribute("serverList", servers);
+			str = "editTable";
+		} else {
+			str = "login";
+		}
+		return str;
 	}
 
 	@PostMapping("/editTable")
@@ -104,15 +113,19 @@ public class EditTable_Feature_ControllerClass {
 	@GetMapping("/editUnavailable")
 	public String editUnavailable(@ModelAttribute("table") Table table, Model model, HttpSession session,
 			@RequestParam(required = true) int id) {
-
-		this.id = id;
-		model.addAttribute("id", id);
-		table = tDAO.getOneTable(id);
-		model.addAttribute("table", table);
-		List<Server> servers = sDao.getAllServers();
-		model.addAttribute("serverList", servers);
-
-		return "editUnavailable";
+		String str = "";
+		if (session.getAttribute("id") != null) {
+			this.id = id;
+			model.addAttribute("id", id);
+			table = tDAO.getOneTable(id);
+			model.addAttribute("table", table);
+			List<Server> servers = sDao.getAllServers();
+			model.addAttribute("serverList", servers);
+			str = "editUnavailable";
+		} else {
+			str = "login";
+		}
+		return str;
 
 	}
 
