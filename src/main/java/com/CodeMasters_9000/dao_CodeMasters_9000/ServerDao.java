@@ -52,6 +52,16 @@ public class ServerDao {
 		}
 		return name;
 	}
+	public String getPhoneNumber(int id) {
+		List<Server> list = getAllServers();
+		String phone = "";
+		for (Server server : list) {
+			if (Integer.parseInt(server.getServerID()) == id) {
+				phone = server.getPhoneNumber();
+			}
+		}
+		return phone;
+	}
 
 	public List<Server> getAllServers() {
 		return jdbcTemplate.query(SQL_GET_ALL, new ServerMapper());

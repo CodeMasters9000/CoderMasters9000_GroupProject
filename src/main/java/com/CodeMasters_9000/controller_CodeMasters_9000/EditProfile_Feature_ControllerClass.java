@@ -26,7 +26,10 @@ public class EditProfile_Feature_ControllerClass {
 		String str = "";
 		if (session.getAttribute("id") != null) {
 			List<Server> servers = sDao.getAllServers();
-
+			String serverName = sDao.getOneServer(Integer.parseInt(session.getAttribute("id").toString()));
+			String serverPhone = sDao.getPhoneNumber(Integer.parseInt(session.getAttribute("id").toString()));
+			model.addAttribute("serverName", serverName);
+			model.addAttribute("phone", serverPhone);
 			model.addAttribute("serverList", servers);
 			str = "editProfile";
 		} else {
@@ -36,11 +39,15 @@ public class EditProfile_Feature_ControllerClass {
 	}
 
 	@PostMapping("/editProfile")
-	public String editElements(@ModelAttribute("server") Server server, Model model) {
-		sDao.editServer(server, false);
-		List<Server> servers = sDao.getAllServers();
+	public String editElements(@ModelAttribute("server") Server server, Model model,
+			@RequestParam(name = "name") String name, HttpSession session, @RequestParam(name = "phone") String phone) {
 
-		model.addAttribute("serverList", servers);
+		server.setServerName(name);
+		server.setServerID(session.getAttribute("id").toString());
+		server.setPhoneNumber(phone);
+
+		sDao.editServer(server, false);
+
 		model.addAttribute("serverModel", server);
 		model.addAttribute("message", "Information changed for " + server.getServerName());
 

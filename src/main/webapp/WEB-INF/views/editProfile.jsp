@@ -22,7 +22,7 @@
 	</div>
 	<div class="container">
 
-		<h1>Edit server profile</h1>
+		<h1>Edit ${serverName}'s profile</h1>
 
 		<c:if test="${ message !=null }">
 			<div class="alert alert-success" role="alert">${message}</div>
@@ -30,19 +30,7 @@
 		<form:form action="${pageContext.request.contextPath}/editProfile/"
 			cssClass="form-horizontal" method="post" modelAttribute="server">
 			<div class="form-group">
-				<label for="serverID" class="col-md-3 controllabel">Server</label>
-
-				<div class="col-md-9">
-					<form:select path="serverID" cssClass="form-control"
-						action="${pageContext.request.contextPath}/editProfile/"
-						method="post" modelAttribute="server">
-						<c:forEach var="server" items="${serverList}">
-							<option value="${server.serverID}">${server.serverName}</option>
-						</c:forEach>
-					</form:select>
-
-				</div>
-
+			
 			</div>
 
 
@@ -50,8 +38,7 @@
 				<label for="serverName" class="col-md-3 controllabel">Name:
 				</label>
 				<div>
-					<form:input path="serverName" cssClass="form-control"
-						placeholder="${serverModel.serverName}" />
+					<input name="name" value="${serverName}" />
 				</div>
 			</div>
 
@@ -59,8 +46,7 @@
 				<label for="phoneNumber" class="col-md-3 controllabel">Phone
 					Number: </label>
 				<div>
-					<form:input path="phoneNumber" cssClass="form-control"
-						placeholder="${serverModel.phoneNumber}" />
+					<input name="phone" value="${phone}" />
 				</div>
 			</div>
 			<form:button cssClass="btn btnprimary">
