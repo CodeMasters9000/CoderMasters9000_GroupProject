@@ -14,12 +14,14 @@
 	crossorigin="anonymous">
 <script src="<c:url value="/static/js/jquery-1.11.1.min.js" />"></script>
 <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+
 </head>
 <body>
 	<div class="container">
 	<c:if test="${ message !=null }">
 			<div class="alert alert-danger" role="alert">${message}</div>
 		</c:if>
+		<h1>Please login to enter the reservation system</h1>
 		<form:form action="${pageContext.request.contextPath}/login/"
 			cssClass="form-horizontal" method="post">
 			

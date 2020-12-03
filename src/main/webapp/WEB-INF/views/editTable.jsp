@@ -26,46 +26,58 @@
 			<div class="alert alert-success" role="alert">${message}</div>
 		</c:if>
 		<form:form action="${pageContext.request.contextPath}/editTable/"
-			class="form-group" method="post" modelAttribute="table">
+			class="form-horizontal" method="post" modelAttribute="table">
+
+
+
 			<div class="form-group">
-				<label for="ReservationID" class="col-md-3 controllabel">ReservationID
-					: </label>
-				<div>
-					<input name="ReservationID" class="form-control" />
-				</div>
-
-				<div class="col-md-9">
-					<select name="serverID" class="form-control">
-
-						<c:forEach var="server" items="${serverList}">
-							<option value="${server.serverID}">${server.serverName}</option>
-						</c:forEach>
-					</select> <label for="billID" class="col-md-3 controllabel">Bill ID
-						: </label>
-					<div>
-						<input name="billID" Class="form-control" />
-					</div>
-					<label for="time" class="col-md-3 controllabel">Reservation
-						Time/Walk in Time : </label>
-
-					<div>
-						<input type="time" name="time" min="11:00" max="23:00" /> <input
-							type="date" name="date" />
-
-					</div>
-
-					<select name="isAvailable" class="form-control">
-
-
-						<option value="false" selected>Unavailable</option>
-						<option value="true">available</option>
-
-					</select>
-				</div>
-				<div>
-					<button class="btn btn-primary">Submit</button>
-				</div>
+				<label for="ReservationID">ReservationID : </label> 
+				<input name="ReservationID" class="form-control" />
 			</div>
+
+
+
+			<div class="form-group">
+				<label for="serverID">Server : </label> <select name="serverID"
+					class="form-control">
+
+					<c:forEach var="server" items="${serverList}">
+						<option value="${server.serverID}">${server.serverName}</option>
+					</c:forEach>
+
+				</select>
+			</div>
+
+
+
+
+			<div class="form-group">
+				<label for="billID">Bill ID: </label> <input name="billID"
+					Class="form-control" />
+			</div>
+
+
+
+			<div class="form-group">
+				<label for="time">Reservation Time/Walk in Time : </label> 
+				<input type="time" name="time" min="11:00" max="23:00" Class="form-control" /> 
+				<input type="date" name="date" Class="form-control" />
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="isAvailable">Availability: </label> <select
+					name="isAvailable" class="form-control">
+					<option value="false" selected>Unavailable</option>
+					<option value="true">available</option>
+				</select>
+			</div>
+			
+			
+			<div class="form-group">
+				<button class="btn btn-primary">Submit</button>
+			</div>
+
 		</form:form>
 	</div>
 </body>

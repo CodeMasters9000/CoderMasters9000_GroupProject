@@ -34,37 +34,37 @@
 
 
 
-			<div>
-				<label for="ID" class="col-md-3 controllabel">ID: </label>
-				<div>
-					<input name="ID" cssClass="form-control" />
-				</div>
+			<div class="form-group">
+				<label for="ID" >ID: </label>
+				
+					<input name="ID" class="form-control" />
+				
 			</div>
 
-			<div>
-				<label for="previousPass" class="col-md-3 controllabel">Previous
+			<div class="form-group">
+				<label for="previousPass" >Previous
 					Password: </label>
-				<div>
-					<input name="previousPass" cssClass="form-control" />
-				</div>
+			
+					<input name="previousPass" class="form-control" />
+				
 			</div>
 
-			<div>
-				<label for="newPass" class="col-md-3 controllabel">New
+			<div class="form-group">
+				<label for="newPass" >New
 					Password: </label>
-				<div>
-					<input name="newPass" cssClass="form-control" />
-				</div>
+				
+					<input name="newPass" class="form-control" />
+				
 			</div>
 
-			<div>
-				<label for="confirmPass" class="col-md-3 controllabel">Confirm
+			<div class="form-group">
+				<label for="confirmPass">Confirm
 					Password: </label>
-				<div>
-					<input name="confirmPass" cssClass="form-control" />
-				</div>
+			
+					<input name="confirmPass" class="form-control" />
+				
 			</div>
-			<form:button cssClass="btn btnprimary">
+			<form:button class="btn btn-success">
 					Submit
 			</form:button>
 

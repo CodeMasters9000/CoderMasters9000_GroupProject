@@ -19,6 +19,8 @@
 	<div>
 		<a HREF="${pageContext.request.contextPath}/homePage/"
 			class="btn btn-primary">Return to Home Page</a>
+			<a class="btn btn-primary" HREF="${pageContext.request.contextPath}/changePass/">Change
+				Password</a>
 	</div>
 	<div class="container">
 
@@ -31,33 +33,32 @@
 			cssClass="form-horizontal" method="post" modelAttribute="server">
 			<div class="form-group">
 			
-			</div>
+			
 
 
-			<div>
-				<label for="serverName" class="col-md-3 controllabel">Name:
+			<div class="form-group">
+				<label for="serverName" >Name:
 				</label>
-				<div>
-					<input name="name" value="${serverName}" />
-				</div>
+				
+					<input name="name" class="form-control" value="${serverName}" />
+				
 			</div>
 
-			<div>
-				<label for="phoneNumber" class="col-md-3 controllabel">Phone
+			<div class="form-group">
+				<label for="phoneNumber" >Phone
 					Number: </label>
-				<div>
-					<input name="phone" value="${phone}" />
-				</div>
+				
+					<input name="phone" class="form-control" value="${phone}" />
+			
 			</div>
-			<form:button cssClass="btn btnprimary">
+			<form:button type="button" class="btn btn-success">
 					Submit
 					</form:button>
 
 			<br>
 			<br>
-			<a HREF="${pageContext.request.contextPath}/changePass/">Change
-				Password</a>
-
+			
+	</div>
 		</form:form>
 
 

@@ -28,45 +28,51 @@
 		<form:form
 			action="${pageContext.request.contextPath}/editUnavailable/"
 			class="form-group" method="post" modelAttribute="table">
-			<div class="form-group">
-				<label for="ReservationID" class="col-md-3 controllabel">ReservationID
+		
+				
+				<div class="form-group">
+				<label for="ReservationID">ReservationID
 					: </label>
-				<div>
 					<input name="ReservationID" class="form-control"
 						value="${table.reservationID}" />
 				</div>
 
-				<div class="col-md-9">
+				<div class="form-group">
 					<select name="serverID" class="form-control">
 
 						<c:forEach var="server" items="${serverList}">
 							<option value="${server.serverID}">${server.serverName}</option>
 						</c:forEach>
-					</select> <label for="billID" class="col-md-3 controllabel">Bill ID
+					</select>
+					</div>
+					<div class="form-group">
+					 <label for="billID" >Bill ID
 						: </label>
-					<div>
 						<input name="billID" Class="form-control" value="${table.billID}" />
 					</div>
-					<label for="time" class="col-md-3 controllabel">Reservation
-						Time : </label>
+					
 
-					<div>
-						<input type="time" name="time" min="11:00" max="23:00" /> <input
-							type="date" name="date" />
+					<div class = "form-group">
+					<label for="time">Reservation
+						Time : </label>
+						<input type="time" name="time" min="11:00" max="23:00" Class="form-control"/> 
+						<input type="date" name="date" Class="form-control"/>
 
 					</div>
+					
+					<div class = "form-group">
+					<label for="isAvailable">Availability: </label>
 					<select name="isAvailable" class="form-control">
-
-
 						<option value="false" selected>Unavailable</option>
 						<option value="true">available</option>
-
 					</select>
 				</div>
+				
 				<div>
+				
 					<button class="btn btn-primary">Submit</button>
 				</div>
-			</div>
+			
 		</form:form>
 	</div>
 </body>
