@@ -51,7 +51,7 @@
 					<input name="phone" class="form-control" value="${phone}" />
 			
 			</div>
-			<form:button type="button" class="btn btn-success">
+			<form:button class="btn btn-success">
 					Submit
 					</form:button>
 
